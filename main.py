@@ -1,16 +1,20 @@
 import function as f
 import tkinter as tk
-#successfully commited
 
+#thid function is called when the encrypt button is pressed
 def encrypter(message, key):
-    output_text.delete('1.0', tk.END)
+    output_text.delete('1.0', tk.END)           #clean the output section
     forward = 0
     backward = len(message) - 1
-    for i in message:
-        for j in key:
-            val1, val2 = 0, 0
-            bin_val = f.dec_to_bin_8bit(ord(i))
 
+    for i in message:                           #take each character of the message one by one
+        for j in key:                           #encrypt that chracter with each chracter of the key
+
+            val1, val2 = 0, 0
+            bin_val = f.dec_to_bin_8bit(ord(i)) #convert that char to bin then bin to decemal
+
+            #now the below if statements break the 8-bit binary to two 4 bit binary for the substitution process
+            #first half binary as follow
             if bin_val[0] == '1':
                 val1 += 8
             if bin_val[1] == '1':
@@ -20,6 +24,7 @@ def encrypter(message, key):
             if bin_val[3] == '1':
                 val1 += 1
 
+            #second half binary as follow
             if bin_val[4] == '1':
                 val2 += 8
             if bin_val[5] == '1':
@@ -29,26 +34,35 @@ def encrypter(message, key):
             if bin_val[7] == '1':
                 val2 += 1
 
+            #here do all the encryption process like substitution, permutation and then exor with key
             i = chr(ord(j) ^ f.bin_to_dec(f.permutation(f.two_char_to_bin(f.substitution(val1), f.substitution(val2)))))
 
+        #here if replace the char which is below value 33 because it dosent have a printable symbol,
+        # these are some special function character
         if ord(i) < 33:
             k = ord(i) + 256
             i = chr(k)
 
+        #same goes for the chracter between 126 and 161
         if 126 < ord(i) < 161:
             k = ord(i) + 162
             i = chr(k)
+
+        #here the encrypted character are joined to make a string
         message = message[:forward] + i + message[:backward]
         forward += 1
         backward -= 1
+
+    #here we change the output label as Encrypted message
     label['text'] = 'Encrypted\nMessage'
     output_text.insert(1.0, message)
 
 
 def decrypt(message, key):
-    output_text.delete('1.0', tk.END)
+    output_text.delete('1.0', tk.END)                   #clean the output section
     forward = 0
     backward = len(message) - 1
+
     for i in message:
         pos = len(key) - 1
         if 256 <= ord(i) <= 288:

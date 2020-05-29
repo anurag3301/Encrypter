@@ -1,3 +1,4 @@
+#this function converts a int number to 8 bit binary, the binary byte is a string
 def dec_to_bin_8bit(val):
     binary = '00000000'
 
@@ -41,7 +42,9 @@ def dec_to_bin_8bit(val):
         val -= 1
     else:
         binary = binary[:7] + '0' + binary[:0]
+
     return binary
+
 
 
 def two_char_to_bin(val1, val2):
@@ -89,6 +92,9 @@ def two_char_to_bin(val1, val2):
     return binary
 
 
+
+#this function convert 8 bit binary or a byte to integer, here the binary argument is string of 8 char
+# representing '1's and '0's
 def bin_to_dec(binary):
     val = 0
     if binary[0] == '1':
@@ -110,6 +116,24 @@ def bin_to_dec(binary):
     return val
 
 
+#here the process of substitution is done for the encryption, meaning replacing a number with some another number,
+# the tabel is given as follow
+
+# 1   ->  14
+# 2   ->  15
+# 3   ->  5
+# 4   ->  9
+# 5   ->  11
+# 6   ->  6
+# 7   ->  13
+# 8   ->  2
+# 9   ->  4
+# 10  ->  8
+# 11  ->  1
+# 12  ->  3
+# 13  ->  10
+# 14  ->  7
+# 15  ->  12
 def substitution(num):
     if num == 1:
         val = 14
@@ -146,6 +170,17 @@ def substitution(num):
     return val
 
 
+#here the process of permutation is done aka interchanging the places of bit in a byte,
+# the sequence of binary arrangement as follow
+
+# 1  ->  5
+# 2  ->  8
+# 3  ->  6
+# 4  ->  3
+# 5  ->  2
+# 6  ->  4
+# 7  ->  1
+# 8  ->  7
 def permutation(binaryIn):
     binary = '00000000'
     binary = binary[:0] + binaryIn[4] + binary[:7]
@@ -159,6 +194,8 @@ def permutation(binaryIn):
     return binary
 
 
+
+#it converts 4 bit binary to int, again the binary is a string of '0' and '1'
 def bin_to_dec_4bit(binary):
     val = 0
     if binary[0] == '1':
@@ -172,6 +209,8 @@ def bin_to_dec_4bit(binary):
     return val
 
 
+
+#it converts int to 4 bit binary, the return binary is in form of a string
 def dec_to_bin_4bit(val):
     binary = '0000'
     if val >= 8:
@@ -197,6 +236,18 @@ def dec_to_bin_4bit(val):
     return binary
 
 
+
+#here the process of reverse permutation is done for the decryption. It shoud be exact reverse of
+# the perutation process, binary interchange sequence as follow
+
+# 1  ->  7
+# 2  ->  5
+# 3  ->  4
+# 4  ->  6
+# 5  ->  1
+# 6  ->  3
+# 7  ->  8
+# 8  ->  2
 def reverse_permutation(binaryIn):
     binary = '00000000'
     binary = binary[:0] + binaryIn[6] + binary[:7]
@@ -210,6 +261,24 @@ def reverse_permutation(binaryIn):
     return binary
 
 
+#here the process of reverse substitution is done for the decryption. Make sure it is exact
+# reverse if the substitution process. Sequence of number interchange as follow
+
+# 1   ->  11
+# 2   ->  8
+# 3   ->  12
+# 4   ->  9
+# 5   ->  3
+# 6   ->  6
+# 7   ->  14
+# 8   ->  10
+# 9   ->  4
+# 10  ->  13
+# 11  ->  5
+# 12  ->  15
+# 13  ->  7
+# 14  ->  1
+# 15  ->  2
 def reverse_substitution(num):
     if num == 1:
         val = 11
