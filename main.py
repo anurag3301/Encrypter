@@ -63,8 +63,10 @@ def decrypt(message, key):
     forward = 0
     backward = len(message) - 1
 
-    for i in message:
+    for i in message:                               #taking each character of the encryped message to get decrpted
         pos = len(key) - 1
+
+        #here the reverse of the replacing character done on line 42 to 49 is done
         if 256 <= ord(i) <= 288:
             k = ord(i) - 256
             i = chr(k)
@@ -73,7 +75,7 @@ def decrypt(message, key):
             k = ord(i) - 162
             i = chr(k)
 
-        for j in key:
+        for j in key:                               #here the encryped character is decryped using each character of the key
             binary = f.reverse_permutation(f.dec_to_bin_8bit(ord(i) ^ ord(key[pos])))
             i = chr(f.bin_to_dec(f.dec_to_bin_4bit(f.reverse_substitution(f.bin_to_dec_4bit(binary[0:4]))) + f.dec_to_bin_4bit(
                 f.reverse_substitution(f.bin_to_dec_4bit(binary[4:8])))))
@@ -81,12 +83,15 @@ def decrypt(message, key):
         message = message[:forward] + i + message[:backward]
         forward += 1
         backward -= 1
+
+    #change the output label to Decryped message
     label['text'] = 'Decrypted\nMessage'
     output_text.insert(1.0, message)
 
 
-root = tk.Tk()
+root = tk.Tk()              #create tkinter window
 
+#creating the tkinter widgets
 canvas = tk.Canvas(root, height=250, width=600)
 head_label = tk.Label(canvas, text='Message Encrypter', font=('verdana', 20))
 message_label = tk.Label(canvas, text='Message: ', font=('verdana', 15))
@@ -100,6 +105,7 @@ encrypt_button = tk.Button(canvas, text='Encrypt', font=('verdana', 15), command
 decrypt_button = tk.Button(canvas, text='Decrypt', font=('verdana', 15), command=lambda: decrypt(message_entry.get(), key_entry.get()))
 
 
+#placing the widgetes
 canvas.pack()
 head_label.place(y=1, relx=0.4)
 message_label.place(x=3, y=50, anchor='w')
