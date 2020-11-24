@@ -6,9 +6,8 @@ Now the you can copy and send the encrypted message which you will get in the ou
 Remember the key which you have chosen to encrypt the message plays a very crucial part in the decryption of that message.
 Mistake of single character or even a single space will lead to wrong decryption.
 
+Demo of the program: https://www.youtube.com/watch?v=wFZdYKLUT1o
+
 Understand the Algorithm: https://www.youtube.com/watch?v=DLjzI5dX8jc
-
-Demo of the program: https://www.youtube.com/watch?v=lmquPjoDzqM
-
 
 [![Run on Repl.it](https://repl.it/badge/github/anurag3301/Encrypter)](https://repl.it/github/anurag3301/Encrypter)
