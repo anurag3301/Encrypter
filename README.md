@@ -9,4 +9,6 @@ Mistake of single character or even a single space will lead to wrong decryption
 Understand the Algorithm: https://www.youtube.com/watch?v=DLjzI5dX8jc
 
 Demo of the program: https://www.youtube.com/watch?v=lmquPjoDzqM
+
+
 [![Run on Repl.it](https://repl.it/badge/github/anurag3301/Encrypter)](https://repl.it/github/anurag3301/Encrypter)
