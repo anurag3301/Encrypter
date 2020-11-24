@@ -92,31 +92,33 @@ def decrypt(message, key):
 root = tk.Tk()              #create tkinter window
 
 #creating the tkinter widgets
-canvas = tk.Canvas(root, height=250, width=600)
+canvas = tk.Canvas(root, height=250, width=650)
 head_label = tk.Label(canvas, text='Message Encrypter', font=('verdana', 20))
 message_label = tk.Label(canvas, text='Message: ', font=('verdana', 15))
 key_label = tk.Label(canvas, text='Key: ', font=('verdana', 15))
-message_entry = tk.Entry(canvas, width=55, font=('verdana', 15))
-key_entry = tk.Entry(canvas, width=55, font=('verdana', 15))
+message_entry = tk.Entry(canvas, width=40, font=('verdana', 15))
+key_entry = tk.Entry(canvas, width=40, font=('verdana', 15))
 output_label = tk.Label(canvas, text='OutPut ↓', font=('verdana', 15))
 label = tk.Label(canvas, text='Encrypted\nMessage', font=('verdana', 15))
-output_text = tk.Text(canvas, height=1, width=55, borderwidth=1, font=('verdana', 15))
+output_text = tk.Text(canvas, height=1, width=40, borderwidth=1, font=('verdana', 15))
 encrypt_button = tk.Button(canvas, text='Encrypt', font=('verdana', 15), command=lambda: encrypter(message_entry.get(), key_entry.get()))
 decrypt_button = tk.Button(canvas, text='Decrypt', font=('verdana', 15), command=lambda: decrypt(message_entry.get(), key_entry.get()))
 
 
 #placing the widgetes
 canvas.pack()
-head_label.place(y=1, relx=0.4)
+head_label.place(y=1, relx=0.35)
 message_label.place(x=3, y=50, anchor='w')
-key_label.place(x=3, y=80, anchor='w')
-message_entry.place(x=150, y=40)
-key_entry.place(x=150, y=70)
-output_label.place(y=125, relx=0.45)
+key_label.place(x=3, y=85, anchor='w')
+
+message_entry.place(x=120, y=40)
+key_entry.place(x=120, y=75)
+
+output_label.place(y=115, relx=0.45)
 label.place(x=3, y=170, anchor='w')
-output_text.place(x=150, y=160)
+output_text.place(x=120, y=150)
 encrypt_button.place(x=350, y=200)
-decrypt_button.place(x=450, y=200)
+decrypt_button.place(x=470, y=200)
 
 root.mainloop()
 
