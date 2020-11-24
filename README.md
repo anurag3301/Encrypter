@@ -1,4 +1,4 @@
-# Encryption-
+# Encryption
 Using this software is very easy, just run the 'main.py' file.
 You will get a Tkinter window. 
 Enter your message in the message entry and a key in the Key entry and click on Encrypt button.
