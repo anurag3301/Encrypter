@@ -314,4 +314,3 @@ def reverse_substitution(num):
         val = 0
     return val
 
-
